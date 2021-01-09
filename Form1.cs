@@ -388,10 +388,9 @@ namespace God2Iso {
         }
 
         private void buttonAbout_Click(object sender, EventArgs e) {
-            MessageBox.Show("Copyright (c) 2010 rab - richardaburton@gmail.com" + Environment.NewLine
-                + "This program is licensed under https://creativecommons.org/licenses/by-sa/4.0/"
-                + "Find this project on Github: https://github.com/raburton/god2iso/"
-                + "Special thanks to Richard Burton for open sourcing such a useful tool."
+            MessageBox.Show("Copyright (c) 2010-2021 richardaburton@gmail.com" + Environment.NewLine
+                + "This program is licensed under https://creativecommons.org/licenses/by-sa/4.0/" + Environment.NewLine
+                + "Find this project on Github: https://github.com/raburton/god2iso/" + Environment.NewLine
                 , "God2Iso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
