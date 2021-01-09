@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+﻿﻿using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("God2Iso")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Program to convert Xbox 360 Games on Demand (GOD) containers to ISO")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("rab (richardaburton@gmail.com)")]
 [assembly: AssemblyProduct("God2Iso")]
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.4.0")]
-[assembly: AssemblyFileVersion("1.0.4.0")]
+[assembly: AssemblyVersion("1.0.5.0")]
+[assembly: AssemblyFileVersion("1.0.5.0")]
