@@ -4,7 +4,14 @@
 
 This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
+## v1.0.5
 
+***What's new?***
+
+- God2Iso is now open source, licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
+- Version bump because this is a BIG deal.
+- Adjusted copyright text to reflect Github repository and new licensing.
+- Added assembly description
 
 ## v1.0.4
 
