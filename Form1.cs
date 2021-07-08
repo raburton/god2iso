@@ -30,7 +30,7 @@ namespace God2Iso {
             browser.CheckFileExists = true;
             if (lastPath != null && Directory.Exists(lastPath)) browser.InitialDirectory = lastPath;
             if (browser.ShowDialog() == DialogResult.OK) {
-                string path = browser.FileName + ".data\\" + "Data0000";
+                string path = Path.Combine(browser.FileName + ".data", "Data0000");
                 if (listPackages.Items.Contains(browser.FileName)) {
                     MessageBox.Show("God package already already in the list.", "God2Iso", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 } else if (File.Exists(path)) {
@@ -53,7 +53,6 @@ namespace God2Iso {
         }
 
         private void buttonGo_Click(object sender, EventArgs e) {
-
             try {
                 if (listPackages.Items.Count < 1) {
                     MessageBox.Show("No God packages specified.", "God2Iso", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -85,7 +84,7 @@ namespace God2Iso {
                 for (int i = 0; i < listPackages.Items.Count; i++) {
                     int count = 0;
                     while (true) {
-                        string path = ((string)listPackages.Items[i]) + ".data\\Data" + count.ToString("D4");
+                        string path = Path.Combine(((string)listPackages.Items[i]) + ".data", "Data" + count.ToString("D4"));
                         if (!File.Exists(path)) break;
                         count++;
                         FileInfo info = new FileInfo(path);
@@ -108,7 +107,6 @@ namespace God2Iso {
 
                 progressTotal.Maximum = totalFiles;
                 if (windowsTaskbar != null) windowsTaskbar.SetProgressState(TaskbarProgressBarState.Normal);
-
                 backgroundWorker.RunWorkerAsync();
             } catch (Exception ex) {
                 textBox1.Text = ex.Message + Environment.NewLine + ex.StackTrace;
@@ -170,28 +168,28 @@ namespace God2Iso {
                 try {
 
                     string baseName = Path.GetFileName((string)listPackages.Items[i]);
-                    string dataPath = (string)listPackages.Items[i] + ".data\\";
+                    string dataPath = (string)listPackages.Items[i] + ".data";
 
                     // count files
                     int totalFiles;
                     for (totalFiles = 0; true; totalFiles++) {
-                        string path = dataPath + "Data" + totalFiles.ToString("D4");
+                        string path = Path.Combine(dataPath, "Data" + totalFiles.ToString("D4"));
                         if (!File.Exists(path)) break;
                     }
                     if (totalFiles < 1) return;
 
                     // check for xsf header
-                    bool hasXSF = HasXSFHeader(dataPath + "Data0000");
+                    bool hasXSF = HasXSFHeader(Path.Combine(dataPath, "Data0000"));
 
                     // open new iso file
-                    iso = new FileStream(textOutput.Text + '\\' + baseName + ".iso", FileMode.Create, FileAccess.ReadWrite);
+                    iso = new FileStream(Path.Combine(textOutput.Text, baseName + ".iso"), FileMode.Create, FileAccess.ReadWrite);
 
                     // add header, if needed
                     if (!hasXSF) iso.Write(Properties.Resources.XSFHeader, 0, Properties.Resources.XSFHeader.Length); ;
 
                     // loop through data parts
                     for (int fileNum = 0; fileNum < totalFiles; fileNum++) {
-                        string path = dataPath + "Data" + fileNum.ToString("D4");
+                        string path = Path.Combine(dataPath, "Data" + fileNum.ToString("D4"));
                         data = new FileStream(path, FileMode.Open, FileAccess.Read);
                         data.Position = 0x2000;
                         int len = 0;
@@ -393,12 +391,6 @@ namespace God2Iso {
                 + "Find this project on Github: https://github.com/raburton/god2iso/" + Environment.NewLine
                 , "God2Iso", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
-
-        /*private void button1_Click_1(object sender, EventArgs e) {
-            FileStream iso = new FileStream("d:\\C70A06B76A5C6396ACADE9524971ECEF.iso", FileMode.Open, FileAccess.ReadWrite);
-            FixSectorOffsets(iso, "d:\\C70A06B76A5C6396ACADE9524971ECEF");
-            iso.Close();
-        }*/
 
     }
 
