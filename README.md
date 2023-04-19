@@ -9,14 +9,13 @@ This work is licensed under a <a rel="license" href="http://creativecommons.org/
 ***What's new?***
 
 - God2Iso is now open source, licensed under the Creative Commons Attribution-ShareAlike 4.0 International License.
-- Version bump because this is a BIG deal.
 - Adjusted copyright text to reflect Github repository and new licensing.
-- Added assembly description
+- Added assembly description.
+- Use Path.Combine for better linux support (thanks to Megan Leet).
+- This verison tagged (somewhat late) and binary version uploaded as requested.
 
 ## v1.0.4
 
-Rab released a new version of GOD2ISO – a tool to get back a lost iso from the god you’ve made.
+***What's new?***
 
-What’s new/fixed:
-
-* handle updating sector offsets for directory tables which span multiple sectors
+- Handle updating sector offsets for directory tables which span multiple sectors
